@@ -1,0 +1,15 @@
+<h1>Movie list</h1>
+<hr>
+<%=link_to "Add a new movie", new_list_bookmark_path(@list)%>
+<%=link_to "Back", lists_path%>
+<hr>
+<%@bookmarks.each do |bookmark|%>
+  <ul>
+   <li>
+    <p>Movie: <%=bookmark.movie.title%> </p>
+    <p>Rating: <%=bookmark.movie.rating.round(1)%> </p>
+    <p>Comment: <%=bookmark.comment%></p>
+    <%=link_to "Delete movie", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+   </li>
+  </ul>
+<%end%>
